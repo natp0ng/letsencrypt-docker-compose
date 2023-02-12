@@ -164,8 +164,8 @@ docker volume create --name=letsencrypt_certs
 ### <a id="4952d0670f6fb00a0337d2251621508a"></a>Step 4 - Build images and start containers using staging Let's Encrypt server
 
 ```bash
-docker compose up -d --build
-docker compose logs -f
+docker-compose up -d --build
+docker-compose logs -f
 ```
 
 You can alternatively use the `docker-compose` binary.
@@ -191,7 +191,7 @@ Certificates issued by `(STAGING) Let's Encrypt` are considered not secure by br
 Stop the containers:
 
 ```bash
-docker compose down
+docker-compose down
 ```
 
 Configure to use production Let's Encrypt server in [`config.env`](config.env):
@@ -210,8 +210,8 @@ docker volume create --name=letsencrypt_certs
 Start the containers:
 
 ```bash
-docker compose up -d
-docker compose logs -f
+docker-compose up -d
+docker-compose logs -f
 ```
 
 ### <a id="70d8ba04ba9117ff3ba72a9413131351"></a>Step 7 - verify HTTPS works with the production certificates
@@ -229,7 +229,7 @@ Update a configuration in `vhosts/${domain}.conf`.
 Do a hot reload of the Nginx configuration:
 
 ```bash
-docker compose exec --no-TTY nginx nginx -s reload
+docker-compose exec --no-TTY nginx nginx -s reload
 ```
 
 ## <a id="35a7ab6c3c12c73a0fce287690b1c216"></a>Adding a new domain to a running solution
@@ -274,9 +274,9 @@ Create a webroot `html/test3.evgeniy-khyst.com` and add static content.
 ### <a id="38f75935bf20b547d1f6788791645d5d"></a>Step 3 - Restart Docker containers
 
 ```bash
-docker compose down
-docker compose up -d
-docker compose logs -f
+docker-compose down
+docker-compose up -d
+docker-compose logs -f
 ```
 
 ## <a id="7cd115332ea5785828a7a0b5249f0755"></a>Directory structure
@@ -349,8 +349,8 @@ Remove the domain name from [`config.env`](config.env)
 ### <a id="90d95ace-2684-11ed-a261-0242ac120002"></a>Step 3 - Update Docker containers 
 
 ```bash
-docker compose down
+docker-compose down
 docker volume rm nginx_conf
 docker volume create --name=nginx_conf
-docker compose up -d
+docker-compose up -d
 ```
